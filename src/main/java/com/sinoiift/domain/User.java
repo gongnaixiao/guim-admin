@@ -8,110 +8,120 @@ import java.io.Serializable;
 
 /**
  * 用户
- * @author DingYS
  *
+ * @author DingYS
  */
 @Entity
 public class User extends Entitys implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue
-	private Long id;
-	@Column(nullable = false, unique = true)
-	private String userName;
-	@Column(nullable = false)
-	private String passWord;
-	@Column(nullable = false, unique = true)
-	private String email;	
-	@Column(nullable = true)
-	private String profilePicture;
-	@Column(nullable = true,length = 65535,columnDefinition="Text")
-	private String introduction;
-	@Column(nullable = false)
-	private Long createTime;
-	@Column(nullable = false)
-	private Long lastModifyTime;
-	@Column(nullable = true)
-	private String outDate;
-	@Column(nullable = true)
-	private String validataCode;
-	@Column(nullable = true)
-	private String backgroundPicture;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue
+    private Long userId;
+    @Column(nullable = false, unique = true)
+    private String userName;
+    @Column(nullable = false)
+    private String passWord;
+    @Column(nullable = true)
+    private String salt;
+    @Column(nullable = true)
+    private String realname;
+    @Column(nullable = true)
+    private String avatar;
+    @Column(nullable = true)
+    private String phone;
+    @Column(nullable = true)
+    private String email;
+    @Column(nullable = true)
+    private Byte sex;
+    @Column(nullable = true)
+    private Byte locked;
+    @Column(nullable = true)
+    private Long ctime;
 
-	public User() {
-		super();
-	}
-	public User(String email, String nickName, String passWord, String userName) {
-		super();
-		this.email = email;
-		this.passWord = passWord;
-		this.userName = userName;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassWord() {
-		return passWord;
-	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getIntroduction() {
-		return introduction;
-	}
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
-	}
-	public Long getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Long createTime) {
-		this.createTime = createTime;
-	}
-	public Long getLastModifyTime() {
-		return lastModifyTime;
-	}
-	public void setLastModifyTime(Long lastModifyTime) {
-		this.lastModifyTime = lastModifyTime;
-	}
-	public String getProfilePicture() {
-		return profilePicture;
-	}
-	public void setProfilePicture(String profilePicture) {
-		this.profilePicture = profilePicture;
-	}
-	public String getOutDate() {
-		return outDate;
-	}
-	public void setOutDate(String outDate) {
-		this.outDate = outDate;
-	}
-	public String getValidataCode() {
-		return validataCode;
-	}
-	public void setValidataCode(String validataCode) {
-		this.validataCode = validataCode;
-	}
-	public String getBackgroundPicture() {
-		return backgroundPicture;
-	}
-	public void setBackgroundPicture(String backgroundPicture) {
-		this.backgroundPicture = backgroundPicture;
-	}
+    public Long getId() {
+        return userId;
+    }
+
+    public void setId(Long id) { this.userId = id; }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Byte getSex() {
+        return sex;
+    }
+
+    public void setSex(Byte sex) {
+        this.sex = sex;
+    }
+
+    public Byte getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Byte locked) {
+        this.locked = locked;
+    }
+
+    public Long getCtime() {
+        return ctime;
+    }
+
+    public void setCtime(Long ctime) {
+        this.ctime = ctime;
+    }
 }
