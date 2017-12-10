@@ -1,0 +1,7 @@
+user
+user_permission
+permission
+
+role
+role_permission
+user_role
