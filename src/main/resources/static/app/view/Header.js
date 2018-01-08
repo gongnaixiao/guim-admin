@@ -21,7 +21,7 @@ Ext.define('AM.view.Header', {
                 fontWeight:'bold'
             },
             cls :'s-color',
-            html: 'Ext-Admin',
+            html: '柜面管理',
             flex: 1
         },
         {

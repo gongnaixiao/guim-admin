@@ -27,38 +27,6 @@ Ext.define('AM.controller.MainController', {
         p.add([
                 {
                     xtype: 'treepanel',
-                    title: '系统管理',
-                    rootVisible: false,
-                    layout: 'fit',
-                    iconCls: '',
-                    glyph: '',
-                    root: {
-                        expanded: true,
-                        children: [
-                            {
-                                id: '01',
-                                xtype: 'userlist',
-                                text: '用户管理',
-                                leaf: true
-                            },
-                            {
-                                id: '02',
-                                xtype: '',
-                                text: '角色管理',
-                                leaf: true
-                                ,
-                            },
-                            {
-                                id: '03',
-                                xtype: '',
-                                text: '菜单管理',
-                                leaf: true
-                            }
-                        ]
-                    }
-                },
-                {
-                    xtype: 'treepanel',
                     title: '部署管理',
                     rootVisible: false,
                     layout: 'fit',
@@ -69,8 +37,8 @@ Ext.define('AM.controller.MainController', {
                         children: [
                             {
                                 id: '11',
-                                xtype: 'sysEnv',
-                                text: '所有柜面环境',
+                                xtype: 'EnvList',
+                                text: '柜面环境',
                                 leaf: true
                             },
                             {
@@ -103,7 +71,39 @@ Ext.define('AM.controller.MainController', {
                             }
                         ]
                     }
-                }
+                },
+                {
+                    xtype: 'treepanel',
+                    title: '系统管理',
+                    rootVisible: false,
+                    layout: 'fit',
+                    iconCls: '',
+                    glyph: '',
+                    root: {
+                        expanded: true,
+                        children: [
+                            {
+                                id: '01',
+                                xtype: 'userlist',
+                                text: '用户管理',
+                                leaf: true
+                            },
+                            {
+                                id: '02',
+                                xtype: '',
+                                text: '角色管理',
+                                leaf: true
+                                ,
+                            },
+                            {
+                                id: '03',
+                                xtype: '',
+                                text: '菜单管理',
+                                leaf: true
+                            }
+                        ]
+                    }
+                },
             ]
         );
         me.initTab();
@@ -128,7 +128,6 @@ Ext.define('AM.controller.MainController', {
         var tab = Ext.getCmp('centerId');
         var item = tab.getComponent(id);
         if (item) {
-            alert(1);
             item.show();
         } else {
             tab.add({

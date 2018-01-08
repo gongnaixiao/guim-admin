@@ -1,16 +1,20 @@
+/**
+ * Created by xg on 2018/1/5.
+ */
 
-Ext.define('AM.view.user.List' ,{
+Ext.define('AM.view.env.List' ,{
     extend: 'AM.ux.PageGrid',
-    alias: 'widget.userlist',
-    store: 'Users',
+    alias: 'widget.EnvList',
+    store: 'EnvStore',
     columns:[
         {header: 'No', xtype: 'rownumberer',width:50},
-        {header: '用户名',  dataIndex: 'userName'},
-        {header: '描述', dataIndex: 'userDesc'},
-        {header: '创建日期', dataIndex: 'createTime'},
-        {header: '状态', dataIndex: 'userState',renderer:function (val) {
-            return val==1 ? "<font color='green'>启用</font>" : "<font color='red'>锁定</font>";
-        }},
+        {header: '环境名称',  dataIndex: 'name'},
+        {header: '应用IP', dataIndex: 'appIP'},
+        {header: '应用用户名', dataIndex: 'appUserName'},
+        {header: '应用密码', dataIndex: 'appPassWord'},
+        {header: '数据库IP', dataIndex: 'dbIP'},
+        {header: '数据库用户名', dataIndex: 'dbUserName'},
+        {header: '数据库密码', dataIndex: 'dbPassWord'},
         {
             header:'操作',
             menuDisabled: true,
@@ -31,13 +35,6 @@ Ext.define('AM.view.user.List' ,{
                 handler:function (grid, rowIndex, colIndex) {
                     var rec = grid.getStore().getAt(rowIndex);
                     this.fireEventArgs('editRow',[grid, rec]);
-                }
-            },{
-                iconCls: 'cog',
-                tooltip: '重置密码',
-                handler:function (grid, rowIndex, colIndex) {
-                    var rec = grid.getStore().getAt(rowIndex);
-                    this.fireEventArgs('rePwd',[grid, rec]);
                 }
             }]
         }
@@ -66,3 +63,4 @@ Ext.define('AM.view.user.List' ,{
         this.callParent(arguments);
     }
 });
+
