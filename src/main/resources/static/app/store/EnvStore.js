@@ -3,8 +3,10 @@
  */
 
 Ext.define('AM.store.EnvStore', {
-    extend: 'AM.ux.GridStore',
+    extend: 'Ext.data.Store',
     model: 'AM.model.Env',
+    pageSize: 10,
+    autoLoad: false,
     proxy: {
         type: 'ajax',
         url: _Api + "/env/list",

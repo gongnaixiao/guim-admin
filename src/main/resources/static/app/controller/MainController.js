@@ -113,7 +113,7 @@ Ext.define('AM.controller.MainController', {
     //菜单点击事件
     menuClick: function (tree, record) {
         this.addTabData(record.raw);
-        location.hash = record.raw.xtype;
+        //location.hash = record.raw.xtype;
     },
 
     //初始化Tab
@@ -123,7 +123,6 @@ Ext.define('AM.controller.MainController', {
 
     //根据数据添加tab
     addTabData: function (data) {
-        alert(data.text);
         var id = "_id_" + data.id;
         var tab = Ext.getCmp('centerId');
         var item = tab.getComponent(id);

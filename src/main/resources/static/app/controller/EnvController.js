@@ -23,57 +23,41 @@ Ext.define('AM.controller.EnvController', {
             },
 
             //新增事件
-            'userlist button[action=add]':{
+            'EnvList button[action=add]':{
                 click:function (b) {
                     var win = Ext.create("AM.ux.Window",{
-                        title:'新增用户',
-                        items:[{xtype:'userform'}],
+                        title:'新增柜面环境',
+                        items:[{xtype:'EnvForm'}],
                         buttons:[
                             {
                                 text:'保存',
                                 handler:function (btn) {
-                                    var tree = win.down('treepanel');
-                                    var checks = tree.getChecked();
-                                    var arrs = [];
-                                    Ext.Array.forEach(checks,function (node) {
-                                        if(node.data.id!='root'){
-                                            Ext.Array.include(arrs,node.data.id);
-                                        }
-                                    });
-                                    Ext.create("AM.ux.Action").submit(win.down("form"),_Api+"/user/add",b.up('grid'),win,{rids:arrs});
+                                    Ext.create("AM.ux.Action").submit(win.down("form"),_Api+"/env/add",b.up('grid'),win);
                                 }
                             },
                             {
-                                text:'重置',handler:function (btn) {
-                                btn.up("window").down("form").form.reset();
-                            }
-                            },{
+                                text:'重置',
+                                handler:function (btn) {
+                                    btn.up("window").down("form").form.reset();
+                                }
+                            },
+                            {
                                 text:'取消',handler:function (btn) {
                                     btn.up("window").close();
                                 }
                             }
-                        ],
-                        listeners:{
-                            render:function () {
-                                var tree = this.down('form').down('treepanel');
-                                tree.getStore().load({
-                                    callback:function () {
-                                        tree.getRootNode().expand();
-                                    }
-                                });
-                            }
-                        }
+                        ]
                     });
                 }
             },
             //批量删除
-            'userlist button[action=remove]':{
+            'EnvList button[action=remove]':{
                 click:function (btn) {
-                    me.removeBatchAction(_Api+"/user/delete",btn.up("grid"));
+                    me.removeBatchAction(_Api+"/env/delete",btn.up("grid"));
                 }
             },
             //搜索
-            'userlist textfield[action=search]':{
+            'EnvList textfield[action=search]':{
                 specialkey: function(field,e){
                     if (e.getKey()==Ext.EventObject.ENTER){
                         Ext.create("AM.ux.Action").search(field.up("grid"),{search:field.getValue()});
@@ -82,29 +66,21 @@ Ext.define('AM.controller.EnvController', {
             },
 
             //行编辑事件
-            'userlist actioncolumn':{
+            'EnvList actioncolumn':{
                 //行删除
                 deleteRow:function (grid, record) {
-                    me.removeRowAction(_Api+"/user/delete",{ids:record.get("id")},grid);
+                    me.removeRowAction(_Api+"/env/delete",{ids:record.get("id")},grid);
                 },
                 //行编辑
                 editRow:function (grid, record) {
                     var win = Ext.create("AM.ux.Window",{
                         title:'编辑用户',
-                        items:[{xtype:'userform'}],
+                        items:[{xtype:'EnvForm'}],
                         buttons:[
                             {
                                 text:'保存',
                                 handler:function (btn) {
-                                    var tree = win.down('treepanel');
-                                    var checks = tree.getChecked();
-                                    var arrs = [];
-                                    Ext.Array.forEach(checks,function (node) {
-                                        if(node.data.id!='root'){
-                                            Ext.Array.include(arrs,node.data.id);
-                                        }
-                                    });
-                                    Ext.create("AM.ux.Action").submit(win.down("form"),_Api+"/user/edit",grid,win,{rids:arrs});
+                                    Ext.create("AM.ux.Action").submit(win.down("form"),_Api+"/env/edit",grid,win);
                                 }
                             },
                             {
@@ -121,20 +97,6 @@ Ext.define('AM.controller.EnvController', {
                             show:function () {
                                 var form = this.down("form").down('ux-form');
                                 form.loadRecord(record);
-                                form.down("textfield#userName").setReadOnly(true);
-                                form.remove("password");
-                                form.remove("confPassword");
-                            },
-                            render:function () {
-                                var tree = this.down('form').down('treepanel');
-                                tree.getStore().load({
-                                    params:{
-                                        uid:record.get('id')
-                                    },
-                                    callback:function () {
-                                        tree.getRootNode().expand();
-                                    }
-                                });
                             }
                         }
                     })

@@ -8,6 +8,10 @@
     <name>manage</name>
     <description>manage</description>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
