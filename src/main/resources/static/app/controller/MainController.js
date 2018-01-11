@@ -43,7 +43,8 @@ Ext.define('AM.controller.MainController', {
                             },
                             {
                                 id: '12',
-                                text: 'bbbb',
+                                xtype: 'PkgList',
+                                text: '上传部署',
                                 leaf: true
                             }
                         ]

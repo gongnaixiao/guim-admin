@@ -9,7 +9,7 @@ Ext.application({
 
     controllers: [
         "MainController", "Users", "RoleController", "MenuController",
-        'LogController', "EnvController"
+        'LogController', "EnvController", "PkgController"
     ],
     requires: ['AM.ux.Util'],
 

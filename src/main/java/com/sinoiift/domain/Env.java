@@ -17,9 +17,12 @@ public class Env extends Entitys{
     @GeneratedValue
     @Getter@Setter
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     @Getter@Setter
     private String name;
+    @Column(nullable = false, unique = true)
+    @Getter@Setter
+    private String app;
     @Column
     @Getter@Setter
     private String appIP;

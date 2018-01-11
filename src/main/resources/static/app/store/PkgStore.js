@@ -2,14 +2,14 @@
  * Created by xg on 2018/1/5.
  */
 
-Ext.define('AM.store.EnvStore', {
+Ext.define('AM.store.PkgStore', {
     extend: 'Ext.data.Store',
-    model: 'AM.model.Env',
+    model: 'AM.model.Pkg',
     pageSize: 2,
     autoLoad: false,
     proxy: {
         type: 'ajax',
-        url: _Api + "/env/list",
+        url: _Api + "/pkg/list",
         reader: {
             type: 'json',
             root: 'data',

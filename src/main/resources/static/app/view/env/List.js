@@ -9,6 +9,7 @@ Ext.define('AM.view.env.List' ,{
     columns:[
         {header: 'No', xtype: 'rownumberer',width:50},
         {header: '环境名称',  dataIndex: 'name'},
+        {header: '应用服务器',  dataIndex: 'app'},
         {header: '应用IP', dataIndex: 'appIP'},
         {header: '应用用户名', dataIndex: 'appUserName'},
         {header: '应用密码', dataIndex: 'appPassWord'},

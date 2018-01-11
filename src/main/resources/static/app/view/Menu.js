@@ -1,5 +1,5 @@
 /**
- * Created by jameszhou on 2017/8/10.
+ * Created by xg on 2018/1/8.
  */
 Ext.define('AM.view.Menu',{
     extend: 'Ext.panel.Panel',

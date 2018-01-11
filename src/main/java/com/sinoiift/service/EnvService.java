@@ -25,6 +25,7 @@ public class EnvService {
         Pageable pageable = new PageRequest(page, size);
         Page<Env> pages;
         if(StringUtils.isNotBlank(search)) {
+            search = "%" + search + "%";
             pages = envRepository.findByNameLike(search, pageable);
         } else {
             pages = envRepository.findAll(pageable);

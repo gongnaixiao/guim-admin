@@ -1,5 +1,5 @@
 /**
- * Created by jameszhou on 2017/8/9.
+ * Created by xg on 2018/1/8.
  */
 Ext.define('AM.view.env.Form', {
     extend: 'Ext.form.Panel',
@@ -23,6 +23,13 @@ Ext.define('AM.view.env.Form', {
                     vtype:'alphanum',
                     id:"name",
                     fieldLabel: '环境名称'
+                },
+                {
+                    xtype: 'textfield',
+                    name : 'app',
+                    vtype:'alphanum',
+                    id:"app",
+                    fieldLabel: '应用服务器'
                 },
                 {
                     xtype: 'textfield',
