@@ -114,19 +114,8 @@ public class SecurityFilter implements Filter {
 
         if (url.contains("/media/")
                 || url.contains("/login") || url.contains("/user/login")
-                || url.contains("/register") || url.contains("/user/regist") || url.contains("/index")
                 || url.contains("/forgotPassword") || url.contains("/user/sendForgotPasswordEmail")
-                || url.contains("/newPassword") || url.contains("/user/setNewPassword")
-                || (url.contains("/collector") && !url.contains("/collect/detail/"))
-                || url.contains("/collect/standard/") || url.contains("/collect/simple/")
-                || url.contains("/user") || url.contains("/favorites") || url.contains("/comment")
-                || url.startsWith("/lookAround/standard/")
-                || url.startsWith("/lookAround/simple/")
-                || url.startsWith("/user/")
-                || url.startsWith("/feedback")
-                || url.startsWith("/standard/")
-                || url.startsWith("/collect/standard/lookAround/")
-                || url.startsWith("/collect/simple/lookAround/")) {
+                || url.startsWith("/user/")) {
             return true;
         } else {
             return false;
@@ -148,22 +137,6 @@ public class SecurityFilter implements Filter {
         } catch (Exception e) {
             return strString;
         }
-    }
-
-    public String getRef(HttpServletRequest request) {
-        String referer = "";
-        String param = this.codeToString(request.getQueryString());
-        if (StringUtils.isNotBlank(request.getContextPath())) {
-            referer = referer + request.getContextPath();
-        }
-        if (StringUtils.isNotBlank(request.getServletPath())) {
-            referer = referer + request.getServletPath();
-        }
-        if (StringUtils.isNotBlank(param)) {
-            referer = referer + "?" + param;
-        }
-        request.getSession().setAttribute(Const.LAST_REFERER, referer);
-        return referer;
     }
 
     public String getUserId(String value) {
