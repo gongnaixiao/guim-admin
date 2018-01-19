@@ -7,6 +7,9 @@
 .edit{
     background-image: url(../images/icons/fam/page_white_edit.png);
 }
+.deploy {
+    background-image: url(../images/icons/fam/application_go.png);
+}
 .user{
     background-image: url(../images/icons/fam/user.png);
 }.accept{

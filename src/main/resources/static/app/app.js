@@ -14,7 +14,6 @@ Ext.application({
     requires: ['AM.ux.Util'],
 
     launch: function () {
-
         //  Ext.create("AM.ux.Util").init();
         Ext.create('Ext.container.Viewport', {
             layout: 'fit',

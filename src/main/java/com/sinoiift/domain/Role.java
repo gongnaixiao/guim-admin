@@ -12,7 +12,7 @@ public class Role extends Entitys implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    private Long roleId;
+    private Long id;
     @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = true)
@@ -23,11 +23,11 @@ public class Role extends Entitys implements Serializable {
     private Long ctime;
 
     public Long getRoleId() {
-        return roleId;
+        return id;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setRoleId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

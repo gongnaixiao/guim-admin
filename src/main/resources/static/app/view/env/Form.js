@@ -5,7 +5,7 @@ Ext.define('AM.view.env.Form', {
     extend: 'Ext.form.Panel',
     alias: 'widget.EnvForm',
     width:800,
-    height:300,
+    height:500,
     layout: {
         type:'hbox',
         align:'stretch'
@@ -20,9 +20,8 @@ Ext.define('AM.view.env.Form', {
                 {
                     xtype: 'textfield',
                     name : 'name',
-                    vtype:'alphanum',
                     id:"name",
-                    fieldLabel: '环境名称'
+                    fieldLabel: '环境名称',
                 },
                 {
                     xtype: 'textfield',
@@ -34,50 +33,56 @@ Ext.define('AM.view.env.Form', {
                 {
                     xtype: 'textfield',
                     name : 'appIP',
-                    vtype:'alphanum',
                     id:"appIP",
-                    allowBlank: true,
                     fieldLabel: '应用IP'
                 },
                 {
                     xtype: 'textfield',
-                    name : 'appUserName',
-                    vtype:'alphanum',
-                    id:"appUserName",
-                    allowBlank: true,
+                    name : 'appUsername',
+                    id:"appUsername",
                     fieldLabel: '应用用户名'
                 },
                 {
                     xtype: 'textfield',
-                    name : 'appPassWord',
-                    vtype:'alphanum',
-                    id:"appPassWord",
-                    allowBlank: true,
+                    name : 'appPassword',
+                    id:"appPassword",
                     fieldLabel: '应用密码'
                 },
                 {
                     xtype: 'textfield',
-                    name : 'dbIP',
-                    vtype:'alphanum',
-                    id:"dbIP",
-                    allowBlank: true,
-                    fieldLabel: '数据库IP'
+                    name : 'dbUrl',
+                    id:"dbUrl",
+                    fieldLabel: '数据库url'
                 },
                 {
                     xtype: 'textfield',
-                    name : 'dbUserName',
-                    vtype:'alphanum',
-                    id:"dbUserName",
-                    allowBlank: true,
+                    name : 'dbUsername',
+                    id:"dbUsername",
                     fieldLabel: '数据库用户名'
                 },
                 {
                     xtype: 'textfield',
-                    name : 'dbPassWord',
-                    vtype:'alphanum',
-                    id:"dbPassWord",
-                    allowBlank: true,
+                    name : 'dbPassword',
+                    id:"dbPassword",
                     fieldLabel: '数据库密码'
+                },
+                {
+                    xtype: 'textfield',
+                    name : 'workspace',
+                    id:"workspace",
+                    fieldLabel: '工作空间'
+                },
+                {
+                    xtype: 'textfield',
+                    name : 'apWarDir',
+                    id:"apWarDir",
+                    fieldLabel: 'AP包路径'
+                },
+                {
+                    xtype: 'textfield',
+                    name : 'upWarDir',
+                    id:"upWarDir",
+                    fieldLabel: 'UP包路径'
                 }
             ]
         }

@@ -5,7 +5,7 @@
 Ext.define('AM.store.PkgStore', {
     extend: 'Ext.data.Store',
     model: 'AM.model.Pkg',
-    pageSize: 2,
+    pageSize: 50,
     autoLoad: false,
     proxy: {
         type: 'ajax',

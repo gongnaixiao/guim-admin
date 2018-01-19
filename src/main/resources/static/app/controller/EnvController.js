@@ -74,7 +74,7 @@ Ext.define('AM.controller.EnvController', {
                 //行编辑
                 editRow:function (grid, record) {
                     var win = Ext.create("AM.ux.Window",{
-                        title:'编辑用户',
+                        title:'编辑',
                         items:[{xtype:'EnvForm'}],
                         buttons:[
                             {
@@ -97,6 +97,8 @@ Ext.define('AM.controller.EnvController', {
                             show:function () {
                                 var form = this.down("form").down('ux-form');
                                 form.loadRecord(record);
+                                form.down("#name").setReadOnly(true);
+                                form.down("#name").setFieldStyle('background-color: #ddd; background-image: none;');
                             }
                         }
                     })

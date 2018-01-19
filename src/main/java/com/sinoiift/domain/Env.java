@@ -17,29 +17,8 @@ public class Env extends Entitys{
     @GeneratedValue
     @Getter@Setter
     private Long id;
-    @Column(nullable = false)
-    @Getter@Setter
-    private String name;
+
     @Column(nullable = false, unique = true)
     @Getter@Setter
-    private String app;
-    @Column
-    @Getter@Setter
-    private String appIP;
-    @Column
-    @Getter@Setter
-    private String appUserName;
-    @Column
-    @Getter@Setter
-    private String appPassWord;
-
-    @Column
-    @Getter@Setter
-    private String dbIP;
-    @Column
-    @Getter@Setter
-    private String dbUserName;
-    @Column
-    @Getter@Setter
-    private String dbPassWord;
+    private String name;
 }

@@ -5,7 +5,7 @@
 Ext.define('AM.store.EnvStore', {
     extend: 'Ext.data.Store',
     model: 'AM.model.Env',
-    pageSize: 2,
+    pageSize: 50,
     autoLoad: false,
     proxy: {
         type: 'ajax',

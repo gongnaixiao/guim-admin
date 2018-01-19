@@ -11,7 +11,7 @@ public class Permission {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    private Long permissionId;
+    private Long id;
     /**
      * 名称
      */
@@ -54,11 +54,11 @@ public class Permission {
     private Long ctime;
 
     public Long getPermissionId() {
-        return permissionId;
+        return id;
     }
 
-    public void setPermissionId(Long permissionId) {
-        this.permissionId = permissionId;
+    public void setPermissionId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
