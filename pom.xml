@@ -129,7 +129,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <maxmem>512M</maxmem>
                     <fork>true</fork>
                 </configuration>
             </plugin>

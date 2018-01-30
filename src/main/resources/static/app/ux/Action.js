@@ -125,6 +125,7 @@ Ext.define("AM.ux.Action", {
         if (obj.msg) {
             msg = obj.msg
         }
+        Ext.Ajax.timeout=900000;
         Ext.Msg.show({
             title: '提示',
             msg: '<font color=red>' + msg + '</font>',

@@ -23,7 +23,7 @@ public class DeployServiceImp implements DeployService {
 
     public void executeDeploy(String file, App app) throws Exception {
         final SSHClient ssh = new SSHClient();
-        ssh.loadKnownHosts();
+        //ssh.loadKnownHosts();
         ssh.addHostKeyVerifier(
                 new HostKeyVerifier() {
                     public boolean verify(String arg0, int arg1, PublicKey arg2) {

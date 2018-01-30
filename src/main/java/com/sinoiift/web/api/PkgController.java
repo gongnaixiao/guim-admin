@@ -11,8 +11,11 @@ import com.sinoiift.domain.view.PkgInfo;
 import com.sinoiift.repository.*;
 import com.sinoiift.service.DeployService;
 import com.sinoiift.service.ImpSqlFileService;
+import com.sinoiift.service.impl.DeployServiceImp;
 import com.sinoiift.utils.ZipUtil;
 import org.apache.commons.lang3.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,6 +47,8 @@ public class PkgController {
     ImpSqlFileService impSqlFileService;
     @Autowired
     DeployService deployService;
+
+    private static Logger log = LoggerFactory.getLogger(PkgController.class);
 
     @LoggerManage(description = "获取所有更新包")
     @GetMapping("/pkg/list")
@@ -123,6 +128,7 @@ public class PkgController {
                 for (App app : apps) {
                     deploy(app, pkg);
                 }
+                deployPlanRepository.updateStatus(deploy.getEnvId(), deploy.getPkgId());
             }
         } catch (Exception e) {
             return Rest.failure(e.getMessage());
@@ -143,6 +149,9 @@ public class PkgController {
         List<String> sqls = new ArrayList();
         List<String> tars = new ArrayList();
         for (String fileName : dir.list()) {
+            if (new File(fileName).isDirectory()) {
+                throw new Exception("should not contain Directory!");
+            }
             String suffixName = fileName.substring(fileName.lastIndexOf(".") + 1);
             if (suffixName.equals("sql")) {
                 sqls.add(saveFileDir + "/" + fileName);
@@ -154,7 +163,8 @@ public class PkgController {
             try {
                 impSqlFileService.executeSql(sqls, workspace, app);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
+                log.error(e.getStackTrace().toString());
                 throw new Exception("执行sql文件失败" );
             }
 
@@ -163,6 +173,8 @@ public class PkgController {
                     deployService.executeDeploy(file, app);
                 }
             } catch (Exception e) {
+                log.error(e.getMessage());
+                log.error(e.getStackTrace().toString());
                 throw new Exception("部署失败" );
             }
     }
