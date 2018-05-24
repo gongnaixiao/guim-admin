@@ -29,6 +29,9 @@ public class CSIIImpSqlFileServiceImpl implements ImpSqlFileService {
         if (!workspace.endsWith("/")) {
             workspace += "/";
         }
+        if (lis.isEmpty()) {
+            return;
+        }
         String backUrl = workspace + app.getApp() +"/backup/";
         DataSource dataSource = DBUtils.createDataSource(app);
         try {

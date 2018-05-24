@@ -12,7 +12,9 @@ import com.sinoiift.repository.*;
 import com.sinoiift.service.DeployService;
 import com.sinoiift.service.ImpSqlFileService;
 import com.sinoiift.service.impl.DeployServiceImp;
+import com.sinoiift.utils.FileUtil;
 import com.sinoiift.utils.ZipUtil;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -140,6 +142,8 @@ public class PkgController {
         byte[] bytes = pkg.getContent();
         String workspace = "/tmp/";
         String saveFileDir = workspace + pkg.getName();
+
+        FileUtils.deleteDirectory(new File(saveFileDir));
         try {
             ZipUtil.unZip(bytes, saveFileDir);
         } catch (IOException e) {
@@ -160,22 +164,22 @@ public class PkgController {
                 tars.add(saveFileDir + "/" + fileName);
             }
         }
-            try {
-                impSqlFileService.executeSql(sqls, workspace, app);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-                log.error(e.getStackTrace().toString());
-                throw new Exception("执行sql文件失败" );
-            }
+        try {
+            impSqlFileService.executeSql(sqls, workspace, app);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            log.error(e.getStackTrace().toString());
+            throw new Exception("执行sql文件失败");
+        }
 
-            try {
-                for (String file : tars) {
-                    deployService.executeDeploy(file, app);
-                }
-            } catch (Exception e) {
-                log.error(e.getMessage());
-                log.error(e.getStackTrace().toString());
-                throw new Exception("部署失败" );
+        try {
+            for (String file : tars) {
+                deployService.executeDeploy(file, app);
             }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            log.error(e.getStackTrace().toString());
+            throw new Exception("部署失败");
+        }
     }
 }
